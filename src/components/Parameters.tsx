@@ -9,7 +9,7 @@ const Parameter: FC<Props> = () =>{
     const eventChange = (key: keyof typeof formState, event: React.ChangeEvent<HTMLInputElement>) => {
         setFormState((prevState) => ({            
             ...prevState,            
-            [key]: parseInt(event.target.value), // Динамически обновляем атрибут по ключу            
+            [key]: parseInt(event.target.value),          
         }));
     };
     return(
@@ -18,7 +18,7 @@ const Parameter: FC<Props> = () =>{
                     <div className="form__group"><label className="form__label h2" htmlFor="age">Возраст <span
                                 className="text-light">лет</span></label> <input className="form__control" type="number"
                             id="age" name="age" value={formState.age } min="0" max="150" onChange={(e) => eventChange('age', e)}/> 
-                             {!formState.age && <span className="form__error">Значение должно быть больше 0</span>}</div> 
+                             {(!formState.age || formState.age > 150) && <span className="form__error">Значение должно быть больше 0 и меньше 150</span>}</div> 
                     <div className="form__group"><label className="form__label h2" htmlFor="height">Рост <span
                                 className="text-light">см</span></label> <input className="form__control form__control_error"
                             type="number" id="height" name="height" value={formState.height  } min="0" onChange={(e) => eventChange('height', e)}/>  

@@ -1,17 +1,21 @@
 import React from 'react';
-import { FormProvider } from './components/Context'
+
 import Genders from './components/Gender';
 import Parameter from './components/Parameters';
 import ListButtons from './components/RadioButtons';
 import CalculationOrReset from './components/СalculationOrReset';
+import Calculation from './components/Calculation';
+
+import { FormProvider } from './components/Context';
 import './App.css';
 import { InvalidatedProjectKind } from 'typescript';
 
 function App() {
+
   return (
     <>
+ 
     <FormProvider>
-
         <div className="bg">
                     <div className="bg__overlay"></div>
                     <picture className="bg__img">
@@ -27,9 +31,12 @@ function App() {
                       <Parameter></Parameter>
                       <ListButtons></ListButtons>
                       <CalculationOrReset></CalculationOrReset>
+                      
                         </form>
                     </div>
                 </div>
+                <Calculation></Calculation>
+                
                 </FormProvider>
     </>
   );
