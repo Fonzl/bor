@@ -29,7 +29,7 @@ const Genders: FC<Props> = () => {
                     <input type="radio" id="female" name="gender" value="female" onChange={handleGenderChange} checked={formState.gender == false}/>
                     <label htmlFor="female">Женский</label>
                 </div>
-                {formState.gender === null && <span className="form__error">Нужно выбрать пол</span>}
+                
             </div>
 
         </fieldset>

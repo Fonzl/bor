@@ -19,24 +19,29 @@ const Calculation: FC<Props> =() =>
     }
 };
 
-const caloriesResult =() =>
+const caloriesResult = () =>
 {
-    if(formState.gender)
-        {
-            return((10 * formState.height)   + (6.25 *formState.weight) - (5 *formState.age) +5)
-        }
-    else{
-            return((10 * formState.height)   + (6.25 *formState.weight) - (5 *formState.age) - 161)
-        }
+    if(formState.height && formState.age && formState.weight && formState.visibleСounting ){
+        if(formState.gender)
+            {
+                return(
+                    66.5 +(13.75 * formState.height)   + (5.003 *formState.weight) - (6.775 *formState.age))
+            }
+        else{
+                return(
+                    655.1+(9.563 * formState.height)   + (1.85 *formState.weight) - (4.676 *formState.age))
+            }
+    }
+    else return 0;
 }
 
-if(!(formState.visibleResult && 
-    formState.age && 
-    formState.age <= 150 && 
-    formState.height && 
-    formState.weight && 
-    formState.checkboxs)){
-    return(null);
+if(!(formState.visibleСounting)){
+    return(    <div 
+        className={`counter-result wrapper ${formState.visibleСounting ? 'counter-result_active' : 'counter-result_hidden'}`}
+        style={{ display: formState.visibleСounting ? 'block' : 'none' }}
+    >
+        {/* содержимое */}
+    </div>);
 }
 else
 return( <div className="counter-result counter-result_active wrapper">

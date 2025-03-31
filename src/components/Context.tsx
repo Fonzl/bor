@@ -2,20 +2,20 @@ import React, { createContext, useState } from 'react';
 
 interface FormState {
     gender: boolean ;
-    age: number ;
-    height: number ;
-    weight: number ;
-    checkboxs: string | null;
-    visibleResult: boolean;
+    age: number| '' ;
+    height: number | '';
+    weight: number | '';
+    checkboxs: string ;
+    visibleСounting: boolean;
 }
 
 const Form: FormState = {
     gender: true,
-    age: 0,
-    height: 0,
-    weight: 0,
-    checkboxs: null,
-    visibleResult: false,
+    age: '',
+    height: '',
+    weight: '',
+    checkboxs: "min",
+    visibleСounting: false,
 }
 
 interface FormContextType {

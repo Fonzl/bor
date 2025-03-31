@@ -6,7 +6,7 @@ const ListButtons: FC<Props> = ()=> {
     const {formState, setFormState} = useContext(FormContext);
     const eventCheckBoxs = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.id;           
-        setFormState({ ...formState, checkboxs: value});
+        setFormState({ ...formState, checkboxs: value, visibleСounting : false});
     }
     return(
         <fieldset className="form__group">

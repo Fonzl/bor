@@ -1,32 +1,38 @@
 import React, { FC, useContext } from 'react'
-import {FormContext} from './Context'
+import { FormContext } from './Context'
 import { MouseEvent } from 'react';
-interface Props{  
+interface Props {
 }
 
-const CalculationOrReset: FC<Props> = () =>
-{
-    
-     const eventReset=(event: React.MouseEvent<HTMLButtonElement>) => 
-        {
-            event.preventDefault(); setFormState({ ...formState, checkboxs: null ,age: 0,height:0,weight:0,visibleResult: false}
-                
-            )  
-              
-        }
-        
-        const eventCalculation=(event: React.MouseEvent<HTMLButtonElement>) => 
+const CalculationOrReset: FC<Props> = () => {
+
+    const eventReset = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault(); setFormState({ ...formState, checkboxs: 'min', age: '', height: '', weight: '', visibleСounting: false,gender : true }
+
+        )
+
+    }
+
+    const eventCalculation = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault(); setFormState({ ...formState, visibleСounting: true }
+
+        )
+
+    }
+    const valid = () => {
+        if ((   formState.height !== '' && formState.age !== '' && formState.weight !== '') && formState.height > 0 && formState.checkboxs  && formState.age > 0 && formState.age &&
+            formState.weight > 0 && formState.age < 150)
             {
-               event.preventDefault(); setFormState({ ...formState, visibleResult: true}
-                    
-                )  
-                  
+                return false
             }
+        else return true
+           
+    }
     const { formState, setFormState } = useContext(FormContext);
-    return(
+    return (
         <div className="form__btns"><button className="form__submit btn" type="submit"
-        disabled={!formState.age || !formState.checkboxs || !formState.height || !formState.weight ||  formState.age >= 150} onClick={eventCalculation}>Рассчитать</button> 
-        <button className="form__reset btn btn_transparent" type="reset" onClick={eventReset}>Очистить поля</button></div>
+            disabled={valid()} onClick={eventCalculation}>Рассчитать</button>
+            <button className="form__reset btn btn_transparent" type="reset" onClick={eventReset}>Очистить поля</button></div>
     )
 }
 export default CalculationOrReset;
